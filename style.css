@@ -1,0 +1,137 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f8ff; /* 연한 하늘색 배경 */
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.game-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    width: 350px;
+    max-width: 90%;
+    position: relative; /* 자식 요소의 absolute 포지셔닝을 위해 */
+    /* Flexbox 관련 스타일 제거 (기존 블록 레이아웃 유지) */
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+h1 {
+    color: #4CAF50; /* 초록색 제목 */
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    /* order: 1; */
+    /* width: 100%; */
+    /* text-align: center; */
+}
+
+.game-info {
+    /* order: 2; */
+    margin-bottom: 20px;
+    /* width: 100%; */
+    /* text-align: center; */
+}
+
+.game-info p {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+#startButton {
+    /* order: 3; */
+    margin-bottom: 20px;
+    background-color: #2196F3; /* 파란색 버튼 */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+#startButton:hover, #restartButton:hover {
+    background-color: #1976D2;
+}
+
+
+#poopButton {
+    background-color: #FFEB3B; /* 노란색 버튼 */
+    color: #333;
+    border: none;
+    border-radius: 50%; /* 원형 버튼 */
+    width: 100px;  /* 버튼 너비 조정 */
+    height: 100px; /* 버튼 높이 조정 */
+    font-size: 1.8em; /* 글씨 크기 조정 */
+    cursor: pointer;
+    margin: 30px auto; /* 중앙 정렬 유지 */
+    display: block; /* 블록 요소로 유지 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s ease-out; /* 클릭 시 애니메이션 */
+    /* order: 4; */
+}
+
+#poopButton:active {
+    transform: scale(0.95); /* 클릭 시 버튼 작아짐 */
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #E91E63; /* 진한 분홍색 메시지 */
+    /* order: 6; */
+    /* width: 100%; */
+    /* text-align: center; */
+}
+
+#restartButton {
+    /* order: 7; */
+    margin-top: 20px;
+    background-color: #2196F3; /* 파란색 버튼 */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+
+/* 똥 이미지가 표시될 스타일 */
+.poop-display {
+    position: absolute; /* 부모 컨테이너에 대해 절대 위치 */
+    top: 50%; /* 컨테이너 중앙에서 시작 */
+    left: 50%; /* 컨테이너 중앙에서 시작 */
+    /* transform을 사용하여 버튼 왼쪽에 정확히 배치 */
+    /* -50%는 이미지 자체를 가운데로, -50px는 버튼 너비의 절반(100px/2), -20px는 여백 */
+    transform: translate(calc(-100% - 50px - 20px), -50%); /* 왼쪽으로 이동 + 세로 중앙 정렬 */
+    display: flex; /* 내부 이미지 중앙 정렬용 */
+    justify-content: center;
+    align-items: center;
+    width: auto; /* 내용에 맞게 너비 자동 조절 */
+    max-width: 150px; /* 최대 너비 지정 (원하는 크기로 조절) */
+    opacity: 0; /* 초기에는 투명 */
+    transition: opacity 0.3s ease-in-out; /* 부드러운 나타남/사라짐 효과 */
+    pointer-events: none; /* 이미지 클릭 방지 */
+    z-index: 10; /* 다른 요소 위에 표시 */
+    /* order: 5; */
+}
+
+.poop-display.visible {
+    opacity: 1; /* 보이게 할 때 투명도 1 */
+}
+
+.poop-image {
+    width: 100%; /* 부모 div에 맞춰 크기 조절 */
+    height: auto;
+    display: block;
+}
